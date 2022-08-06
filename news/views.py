@@ -10,7 +10,7 @@ from newsapi import NewsApiClient
 # Create your views here.
 
 def newsapi_key():
-    newsapi=NewsApiClient(api_key='ec84c3f1d9e8452b888ed528b2cc097b')
+    newsapi=NewsApiClient(api_key='') # Insert your API key to use NewsAPi
     return newsapi
 
 
