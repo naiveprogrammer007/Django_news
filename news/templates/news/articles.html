@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class='container mt-3'>
+    {% comment %} <P>LENGTH OF ARTICLES: {{articles|length}}</P>
+    <p>PAGE NUMBER: {{articles.number}}</p> {% endcomment %}
+   
+    <!-- pagination -->  
+       <nav aria-label="...">
+            <ul class="pagination">
+            {% if articles.has_previous %}
+                <li class="page-item ">
+                <a class="page-link" href="?page=1" tabindex="-1">First</a>
+                </li>
+                <li class="page-item ">
+                <a class="page-link" href="?page={{articles.previous_page_number}}" tabindex="-1">Previous</a>
+                </li>
+            {% endif %}
+            {% for num in articles.paginator.page_range %}
+            {% if articles.number == num %}
+                <li class="page-item active">
+                <a class="page-link" href="?page={{num}}">{{num}}</a>
+                </li>
+            {% else %}
+                <li class="page-item ">
+                    <a class="page-link" href="?page={{num}}">{{num}}</a>
+                    </li>
+            {% endif %}
+            {% endfor %}
+
+              {% if articles.has_next %}
+                <li class="page-item">
+                <a class="page-link" href="?page={{ articles.next_page_number }}">Next</a>
+                </li>
+                 <li class="page-item">
+                <a class="page-link" href="?page={{ articles.paginator.num_pages }}">Last</a>
+                </li>
+            {% endif %}
+            </ul>
+        </nav>
+    
+     
+    
+    <!-- newsapi articles -->
+    <div class="row row-cols-1 row-cols-md-4">
+
+            {% for article in articles.object_list %}
+            <div class="col mb-4">
+                <div class="card text-white bg-dark mb-3 h-100">
+                    <img src="{{article.urlToImage}}" class="card-img-top " alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{article.title}}</h5>
+                        <a href="{{article.url}}" target="_blank" class="btn btn-primary">Read</a>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            {% endfor %}
+     </div>
+
+       <!-- pagination -->  
+       <nav aria-label="...">
+            <ul class="pagination">
+            {% if articles.has_previous %}
+                <li class="page-item ">
+                <a class="page-link" href="?page=1" tabindex="-1">First</a>
+                </li>
+                <li class="page-item ">
+                <a class="page-link" href="?page={{articles.previous_page_number}}" tabindex="-1">Previous</a>
+                </li>
+            {% endif %}
+            {% for num in articles.paginator.page_range %}
+            {% if articles.number == num %}
+                <li class="page-item active">
+                <a class="page-link" href="?page={{num}}">{{num}}</a>
+                </li>
+            {% else %}
+                <li class="page-item ">
+                    <a class="page-link" href="?page={{num}}">{{num}}</a>
+                    </li>
+            {% endif %}
+            {% endfor %}
+
+              {% if articles.has_next %}
+                <li class="page-item">
+                <a class="page-link" href="?page={{ articles.next_page_number }}">Next</a>
+                </li>
+                 <li class="page-item">
+                <a class="page-link" href="?page={{ articles.paginator.num_pages }}">Last</a>
+                </li>
+            {% endif %}
+            </ul>
+        </nav>
+    </div>
+
+
+{% endblock content%}
