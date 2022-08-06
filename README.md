@@ -5,7 +5,7 @@
 A simple news app developed using Python/Django/NewsApi/Bootstrap with 4 different news sources and search bar to find specific article/news/story.
 Front-End design using Bootstrap CDN
 
-### Installation
+# Installation
 
   Clone the repo
   1. install virtual environment: virtualenv venv
