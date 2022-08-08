@@ -17,9 +17,15 @@ from django.contrib import admin
 from django.urls import path,include
 from news.views import home_page
 
+from django.conf import settings
+from django.views.static import serve
+from django.conf.urls import url
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',home_page,name='home-page'),
-    path('news/',include('news.urls',namespace='news'))
+    path('news/',include('news.urls',namespace='news')),
+    url(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}), 
+    url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}), 
 
 ]
