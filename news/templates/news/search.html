@@ -2,11 +2,11 @@
 
 {% block content %}
         
-           
+<div class='container mt-3'>     
             <br/> 
             {% if searched %}
                 
-                <div class='container mt-3'>     <nav aria-label="...">
+            <nav aria-label="...">
             <ul class="pagination">
             {% if articles.has_previous %}
                 <li class="page-item ">
@@ -38,6 +38,7 @@
             {% endif %}
             </ul>
         </nav>
+       
                     <h2>You searched for {{searched}}</h2><br>
                     
                     <div class="row row-cols-1 row-cols-md-4">
@@ -67,5 +68,6 @@
                 <h1>Hey you forgot to search</h1>
             {% endif %}
         </center>
-
+    </div>
+</div>
 {% endblock content %}
