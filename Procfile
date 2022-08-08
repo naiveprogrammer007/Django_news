@@ -1,2 +1,1 @@
-web: gunicorn CCMS.wsgi --log-file -
-web: gunicorn tabele.wsgi
+web: gunicorn news_project.wsgi --log-file -
